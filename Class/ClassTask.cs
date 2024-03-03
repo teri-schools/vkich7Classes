@@ -1,30 +1,112 @@
 using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+
+#nullable enable
 
 namespace Class
 {
-    //TODO: Create class Rectangle here
+    class Rectangle{
+        private double sideA, sideB;
 
-    //TODO: Define two private double fields: sideA, sideB
-    //TODO: Define constructor with two double parameters: a, b. Assign parameters to sides
-    //TODO: Define constructor with double parameter: a. Parameter sets side A of rectangle, and B-side always equals 5
-    //TODO: Define constructor without parameters. A-side of rectangle equals 4, B-side - 3
-    //TODO: Define method that returns value of A-side: GetSideA
-    //TODO: Define method that returns value of B-side: GetSideB
-    //TODO: Define method that calculates and returns value of area: Area
-    //TODO: Define method that calculates and returns value of perimeter: Perimeter
-    //TODO: Define method that checks if rectangle is a square: IsSquare. Returns true if it is a square, false if it's not.
-    //TODO: Define method that swaps values of rectangle sides: ReplaceSides
+        public Rectangle(double a, double b)
+        {
+            sideA = a;
+            sideB = b;
+        }
 
+        public Rectangle(double a)
+        {
+            sideA = a;
+            sideB = 5;
+        }
 
+        public Rectangle()
+        {
+            sideA = 4;
+            sideB = 3;
+        }
+        
+        public double GetSideA()
+        {
+            return sideA;
+        }
 
-    //TODO: Create class ArrayRectangles here
+        public double GetSideB()
+        {
+            return sideB;
+        }
 
-    //TODO: Define private field that is array of rectangles: rectangle_array
-    //TODO: Define constructor with gets parameter: n. Constructor should create an empty array of rectangles with length of n
-    //TODO: Define constructor that gets enumerable or array of rectangles. Constructor should assign them to its field
-    //TODO: Define method that adds rectangle on the first empty place of array field: AddRectangle. Returns true if array has empty space, if not
-    //TODO: Define method that returns number of rectangle with max value of area: NumberMaxArea. Numbering starts from 0
-    //TODO: Define method that returns number of rectangle with min value of perimeter: NumberMinPerimeter. Numbering starts from 0
-    //TODO: Define method that returns amount of squares in array of rectangles: NumberSquare
+        public double Area()
+        {
+            return sideA * sideB;
+        }
 
+        public double Perimeter()
+        {
+            return (sideA + sideB) * 2;
+        }
+
+        public bool IsSquare()
+        {
+            return sideA == sideB;
+        }
+
+        public void ReplaceSides()
+        {
+            (sideA, sideB) = (sideB, sideA);
+        }
+
+    }
+
+    class ArrayRectangles
+    {
+        private List<Rectangle> rectangle_array = new List<Rectangle>();
+
+        public ArrayRectangles(int n = 0)
+        {
+
+        }
+
+        public ArrayRectangles(IEnumerable<Rectangle> array)
+        {
+            rectangle_array.Except(array);
+        }
+
+        public bool AddRectangle(Rectangle rectangle)
+        {
+            rectangle_array.Add(rectangle);
+            return true;
+        }
+
+        public double NumberMaxArea()
+        {
+            if (rectangle_array.Count == 0)
+                return 0;
+            return rectangle_array.Max(
+                (Rectangle rectangle) => 
+                { 
+                    return rectangle.Area();
+                }
+            );
+        }
+
+        public double NumberMinPerimeter()
+        {
+            if (rectangle_array.Count == 0)
+                return 0;
+            return rectangle_array.Min(
+                (Rectangle rectangle) => 
+                { 
+                    return rectangle.Perimeter();
+                }
+            );
+        }
+
+        public int NumberSquare()
+        {
+            return rectangle_array.Count;
+        }
+    }
 }
