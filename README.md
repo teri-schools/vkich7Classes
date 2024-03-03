@@ -1,3 +1,6 @@
+# Test
+[![Test](https://github.com/teri-schools/vkich7Classes/actions/workflows/dotnet-desktop.yml/badge.svg?branch=main)](https://github.com/teri-schools/vkich7Classes/actions/workflows/dotnet-desktop.yml)
+
 # Task
 ### Create class Rectangle here
 
