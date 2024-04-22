@@ -1,5 +1,5 @@
 # Test
-[![Test](./actions/workflows/dotnet-desktop.yml/badge.svg?branch=main)](./actions/workflows/dotnet-desktop.yml)
+[![Test](actions/workflows/dotnet-desktop.yml/badge.svg?branch=main)](actions/workflows/dotnet-desktop.yml)
 
 # Task
 ### Create class Rectangle here
